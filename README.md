@@ -51,3 +51,28 @@ docker run -d -p 3000:3000 devops:latest
 ```
 
 The application should now be available on `localhost:3000`
+
+## Deployment
+
+To deploy the application you will need Terraform installed, see https://www.terraform.io/downloads.html
+You also need to connect Terraform to AWS, see https://www.terraform.io/docs/providers/aws/index.html#authentication
+
+Now, from within the terraform folder, run the changes on AWS:
+```
+terraform init
+terraform apply
+```
+
+It will ask you a few questions about your deployment.
+
+As a result, AWS will create your Docker repository, which you now need to populate with a build:
+```
+$(aws ecr get-login --no-include-email --region [region])
+docker build -t devops-assessment .
+docker tag devops-assessment:latest [repo]
+docker push [repo]
+```
+
+Now wait a bit, check out your EC2 load balancer for its DNS name, and the given URL will lead to the API.
+
+# TODO: Here we would want to have a nice domain name to link to, instead of ugly AWS LB names
