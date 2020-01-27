@@ -55,6 +55,7 @@ The application should now be available on `localhost:3000`
 ## Deployment
 
 To deploy the application you will need Terraform installed, see https://www.terraform.io/downloads.html
+
 You also need to connect Terraform to AWS, see https://www.terraform.io/docs/providers/aws/index.html#authentication
 
 Now, from within the terraform folder, run the changes on AWS:
@@ -75,4 +76,4 @@ docker push [repo]
 
 Now wait a bit, check out your EC2 load balancer for its DNS name, and the given URL will lead to the API.
 
-# TODO: Here we would want to have a nice domain name to link to, instead of ugly AWS LB names
+*TODO: Here we would want to have a nice domain name to link to, instead of ugly AWS LB names*
