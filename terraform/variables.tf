@@ -16,6 +16,7 @@ variable "memory" {
 variable "container_port" {
   type = number
   description = "Container port to expose to the world"
+  default = 3000
 }
 
 variable "tasks" {
@@ -26,6 +27,7 @@ variable "tasks" {
 variable "health_check_url" {
   type = string
   description = "Endpoint to use for health checks (should return non-200 on problems)"
+  default = "/healthcheck"
 }
 
 data "aws_availability_zones" "available" {
