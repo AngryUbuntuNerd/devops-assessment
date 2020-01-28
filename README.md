@@ -66,12 +66,12 @@ terraform apply
 
 It will ask you a few questions about your deployment.
 
-As a result, AWS will create your Docker repository, which you now need to populate with a build:
+As a result, AWS will create your Docker repository (in AWS ECR), which you now need to populate with a build:
 ```
 $(aws ecr get-login --no-include-email --region [region])
 docker build -t devops-assessment .
-docker tag devops-assessment:latest [repo]
-docker push [repo]
+docker tag devops-assessment:latest [repo_uri]
+docker push [repo_uri]
 ```
 
 Now wait a bit, check out your EC2 load balancer for its DNS name, and the given URL will lead to the API.
